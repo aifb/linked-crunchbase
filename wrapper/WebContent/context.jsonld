@@ -1,0 +1,23 @@
+{
+	"@context": 
+	{
+		"@vocab": "http://ontologycentral.com/2010/05/cb/vocab#",
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"owl": "http://www.w3.org/2002/07/owl#",
+		"cbw": "http://km.aifb.kit.edu/services/crunchbase/api-vocab#",
+		"db": "http://dbpedia.org/resource/",
+		"type": {
+			"@type": "@vocab",
+			"@id": "rdf:type"
+		},
+		"owl:sameAs": {"@type": "@id"},
+		"homepage_url": {"@type": "@id"},
+		"url": {"@type": "@id"},
+		"api_path": {"@type": "@id"},
+		"facebook_url": {"@type": "@id"},
+		"linkedin_url": {"@type": "@id"},
+		"twitter_url": {"@type": "@id"},
+		"profile_image_url": {"@type": "@id"},
+		"cbw:next_page_url": {"@type": "@id"}
+	}
+}
