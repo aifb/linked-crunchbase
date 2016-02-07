@@ -11,21 +11,29 @@
     </p>
     <p>
       Currently, this service maps every request to Crunchbase. Some mappings of Organizations to DBpedia are available. 
-      The mapping can be found <a href="./organization_mapping.nt">here</a>. To use the service, you have to provide a user_key either via URL Parameter or as an HTTP parameter. 
+      The mapping can be found <a href="./organization_mapping.nt">here</a>. To use the service, you have to auth to Crunchbase. 
+      In the prompt, enter your api key in the username field and keep the password empty.  
     </p>
     
-
-    
     <ul>
-      <li><a href="./organizations/facebook#id">/company/facebook#id</a></li>
-      <li><a href="./persons/mark-zuckerberg#id">/persons/mark-zuckerberg#id</a></li>
+      <li><a href="./api/organizations/facebook#id">/api/company/facebook#id</a></li>
+      <li><a href="./api/persons/mark-zuckerberg#id">/api/persons/mark-zuckerberg#id</a></li>
     </ul>
+    <p>
+    	Some Metadata:
+    </p>
+    <ul>
+    	<li><a href="http://lov.okfn.org/vocommons/voaf/v2.3/">VOAF</a>: <a href="./voaf.ttl">voaf.ttl</a></li>
+    	<li><a href="https://www.w3.org/TR/void/">VoID</a>: <a href="./void.ttl">void.ttl</a></li>
+    	<li>Our <a href="./ontology.owl">Ontology</a> with <a href="./vocab.rdf">links</a> to <a href="http://schema.org/">schema.org</a>.
+    </ul>
+    
 
     <p>
       Please take note of the <a href="https://info.crunchbase.com/docs/terms-of-service/">CrunchBase Terms of Service</a>, the content is provided under the Commons Attribution-NonCommercial License <a href=http://creativecommons.org/licenses/by-nc/4.0/">[CC-BY-NC]</a>
     </p>
 
-    
+    <p> The source-code is available at <a href="https://github.com/aifb/linked-crunchbase">Github</a>.</p>
     
     <h2>Changelog</h2>
     
