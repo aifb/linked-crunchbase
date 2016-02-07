@@ -7,4 +7,4 @@ Compared to the orginal API, our Wrapper converts the given JSON to [JSON-LD](ht
 An online demo can be found [here](http://km.aifb.kit.edu/services/crunchbase/). However, you will need an API key from CrunchBase to use it.
 To deploy it on your own Server, you can either build it from the sources in /wrapper, or you can directly use our WAR-File.
 
-/kb-data contains out ontology, our mapping to DBpedia, the vocabulary and the void-file.
+/kb-data contains out ontology, our mapping to DBpedia, the vocabulary, the voaf-file and the void-file.

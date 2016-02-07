@@ -1,0 +1,18 @@
+@prefix cc: <http://creativecommons.org/ns#>
+@prefix dc: <http://purl.org/dc/terms/>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <#> .
+
+:OntologyCentral 
+	rdf:type voaf:Vocabulary ;
+	voaf:classNumber 23;
+	voaf:propertyNumber 171;
+	voaf:hasEquivalencesWith <http://schema.org/> ;
+	dc:title "Vocabulary for Linked CrunchBase" ;
+	dc:issued "2016-02-05"^^xsd:date ;
+	dc:modified "2016-02-05"^^xsd:date ;
+	cc:licence <http://creativecommons.org/licenses/by-nc/4.0/> ;
+	vs:term_status "testing" . 
