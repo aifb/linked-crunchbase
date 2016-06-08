@@ -6,6 +6,8 @@
 		"owl": "http://www.w3.org/2002/07/owl#",
 		"cbw": "http://km.aifb.kit.edu/services/crunchbase/api-vocab#",
 		"db": "http://dbpedia.org/resource/",
+		"foaf: "http://xmlns.com/foaf/0.1/",
+		"cc:" "http://creativecommons.org/ns#",
 		"type": {
 			"@type": "@vocab",
 			"@id": "rdf:type"

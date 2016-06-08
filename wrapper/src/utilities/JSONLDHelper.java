@@ -61,6 +61,10 @@ public class JSONLDHelper {
 			id = backwardSlashes + id.substring(1, id.lastIndexOf("/"));
 		}
 		jsonld.put("@id", id+"#id");
+		JSONObject documentLicense = new JSONObject();
+		documentLicense.put("@id", id);
+		documentLicense.put("cc:license", "http://creativecommons.org/licenses/by-nc/4.0/");
+		jsonld.put("foaf:page", documentLicense);
 		
 		// get relevant json data from response
 		JSONObject data = jsonObject.getJSONObject("data");

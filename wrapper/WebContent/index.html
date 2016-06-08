@@ -11,17 +11,21 @@
     </p>
     <p>
       Currently, this service maps every request to Crunchbase. Some mappings of Organizations to DBpedia are available. 
-      The mapping can be found <a href="./organization_mapping.nt">here</a>. To use the service, you have to auth to Crunchbase. 
-      In the prompt, enter your api key in the username field and keep the password empty.  
+      The mapping can be found <a href="./organization_mapping.nt">here</a>. 
+    </p>
+    <h2>Authentication</h2>
+    <p>
+      To use the service, you have to auth to Crunchbase. 
+      To do so, enter your api key <a href="./auth">here</a> (put the key in the username field and keep the password field empty). 
+      If you are not authenticated, we redirect the request to a SPARQL-Server and return some of our crawled data. 
     </p>
     
+    <h2>Examples</h2>
     <ul>
       <li><a href="./api/organizations/facebook#id">/api/company/facebook#id</a></li>
       <li><a href="./api/persons/mark-zuckerberg#id">/api/persons/mark-zuckerberg#id</a></li>
     </ul>
-    <p>
-    	Some Metadata:
-    </p>
+    <h2>Metadata</h2>
     <ul>
     	<li><a href="http://lov.okfn.org/vocommons/voaf/v2.3/">VOAF</a>: <a href="./voaf.ttl">voaf.ttl</a></li>
     	<li><a href="https://www.w3.org/TR/void/">VoID</a>: <a href="./void.ttl">void.ttl</a></li>

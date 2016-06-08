@@ -1,23 +1,11 @@
 package utilities;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.Reader;
-import java.nio.charset.Charset;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -79,9 +67,13 @@ public class MappingUtility {
 		}
 	}
 	
+	public String getMapping(String identifier) {
+		return organizationMapping.get(identifier);
+	}
+	
+	
 	private void readMapping(InputStream inputStream) throws IOException {
 		organizationMapping = new HashMap<>();
-		InputStream fis;
 		BufferedReader br;
 		String line;
 		int startIndex = 61; // length of "http://km.aifb.kit.edu/services/crunchbase/api/organizations/"
@@ -102,7 +94,6 @@ public class MappingUtility {
 		}
 		br.close();
 		br = null;
-		fis = null;
 	}
 	
 }

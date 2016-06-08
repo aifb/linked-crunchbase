@@ -54,6 +54,11 @@ public class JSONHelper {
 	public static void useAsID(JSONObject json, String keyName, String backward) {
 		if (json.has(keyName)) {
 			json.put("@id", URIEncoder.encodeURIPath(backward+json.getString(keyName))+"#id");
+			
+			JSONObject documentLicense = new JSONObject();
+			documentLicense.put("@id", backward+json.getString(keyName));
+			documentLicense.put("cc:license", "http://creativecommons.org/licenses/by-nc/4.0/");
+			json.put("foaf:page", documentLicense);
 		}
 		
 		Iterator<String> keyIterator = json.keys();
