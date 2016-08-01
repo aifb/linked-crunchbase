@@ -28,9 +28,11 @@ public class CrunchbaseWrapper extends HttpServlet {
 	private static final String CB_API_BASE_URI = "https://api.crunchbase.com/v/3";
 
 	// local testing
-//	private static final String PUBLIC_URL = "http://localhost:8080/CrunchbaseWrapper/";
+//	private static final String PUBLIC_URL = "http://localhost:8080/CrunchbaseWrapper/api/";
+//	private static final String PUBLIC_CONTEXT = "http://localhost:8080/CrunchbaseWrapper/context.jsonld";
 	// productive use
-	private static final String PUBLIC_URL = "http://km.aifb.kit.edu/services/crunchbase/";
+	private static final String PUBLIC_URL = "http://km.aifb.kit.edu/services/crunchbase/api/";
+	private static final String PUBLIC_CONTEXT = "http://km.aifb.kit.edu/services/crunchbase/context.jsonld";
 
 	private OkHttpClient client;
 	private JSONLDHelper jsonldHelper;
@@ -86,8 +88,8 @@ public class CrunchbaseWrapper extends HttpServlet {
 		} else {
 			String apikey = Authentication.getAPIKey(request);
 			
-			jsonldHelper = new JSONLDHelper(PUBLIC_URL + "context.jsonld",
-					CB_API_BASE_URI, mu);
+			jsonldHelper = new JSONLDHelper(PUBLIC_CONTEXT,
+					CB_API_BASE_URI, PUBLIC_URL, mu);
 			client = new OkHttpClient();
 			client.setConnectTimeout(30, TimeUnit.SECONDS); // maybe increase,
 															// crunchbase isnt

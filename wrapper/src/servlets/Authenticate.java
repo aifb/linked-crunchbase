@@ -40,8 +40,9 @@ public class Authenticate extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String apikey = Authentication.getAPIKey(request);
-				
-		if (apikey == null) {
+		boolean isValid = Authentication.isAPIKeyValid(apikey);
+		
+		if (apikey == null || !isValid) {
 			Authentication.requireAuthentication(request, response);
 		} else {
 			response.getWriter().println("Authorization successfull!");

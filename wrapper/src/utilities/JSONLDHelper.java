@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.util.Collection;
 import java.util.Iterator;
 
+
+
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.lang.CollectorStreamTriples;
@@ -22,13 +24,15 @@ public class JSONLDHelper {
 	private static final String PREFIX = "cbw:"; // for fetching data
 	private String context;
 	private String baseURI;
+	private String baseURIRDF;
 	
 	private MappingUtility mu;
 	
-	public JSONLDHelper(String context, String cbApiBaseUri, MappingUtility mu) {
+	public JSONLDHelper(String context, String cbApiBaseUri, String baseURIRDF, MappingUtility mu) {
 		this.mu = mu;
 		this.context = context;
 		this.baseURI = cbApiBaseUri;
+		this.baseURIRDF = baseURIRDF;
 	}
 	
 	/**
@@ -39,6 +43,7 @@ public class JSONLDHelper {
 	 * @return
 	 */
 	public String json2jsonld(String json, String endpoint) {
+		System.out.println("Endpoint" + endpoint);
 		String id = endpoint;
 		// JSON as given from Crunchbase
 		JSONObject jsonObject = new JSONObject(json);
@@ -50,16 +55,16 @@ public class JSONLDHelper {
 		
 		int slashCount = id.length() - id.replace("/", "").length();
 		String backwardSlashes = ""; // this is used to indicate the api depth. a dirty solution, but it works...
-		if (slashCount == 1) {
+//		if (slashCount == 1) {
 			backwardSlashes = "./";
 			id = backwardSlashes +id.substring(1);
-		} else if (slashCount == 2) {
-			backwardSlashes = "../";
-			id = backwardSlashes +id.substring(1); //permalink as ID
-		} else if (slashCount == 3) {
-			backwardSlashes = "../../";
-			id = backwardSlashes + id.substring(1, id.lastIndexOf("/"));
-		}
+//		} else if (slashCount == 2) {
+//			backwardSlashes = "../";
+//			id = backwardSlashes +id.substring(1); //permalink as ID
+//		} else if (slashCount == 3) {
+//			backwardSlashes = "../../";
+//			id = backwardSlashes + id.substring(1, id.lastIndexOf("/"));
+//		}
 		jsonld.put("@id", id+"#id");
 		JSONObject documentLicense = new JSONObject();
 		documentLicense.put("@id", id);
@@ -140,16 +145,11 @@ public class JSONLDHelper {
 		return jsonld.toString(2);
 	}
 	
-	public static void jsonld2rdf(String jsonld, OutputStream out, String baseURI) {
-		CollectorStreamTriples sink = new CollectorStreamTriples();
-		RDFDataMgr.parse(sink, new ByteArrayInputStream(jsonld.getBytes()), baseURI, Lang.JSONLD);
-		Collection<Triple> triples = sink.getCollected();
-		RDFDataMgr.writeTriples(out, triples.iterator());
-	}
-	
 	public String json2rdf(String json, String endpoint) {
 		CollectorStreamTriples sink = new CollectorStreamTriples();
-		RDFDataMgr.parse(sink, new ByteArrayInputStream(this.json2jsonld(json, endpoint).getBytes()), baseURI, Lang.JSONLD);
+		String jsonld = this.json2jsonld(json, endpoint);
+		ByteArrayInputStream jsonldStream = new ByteArrayInputStream(jsonld.getBytes());
+		RDFDataMgr.parse(sink, jsonldStream, baseURIRDF, Lang.JSONLD);
 		OutputStream out = new ByteArrayOutputStream();
 		Collection<Triple> triples = sink.getCollected();
 		RDFDataMgr.writeTriples(out, triples.iterator());

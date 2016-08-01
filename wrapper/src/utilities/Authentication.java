@@ -1,6 +1,7 @@
 package utilities;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
+
+import com.squareup.okhttp.HttpUrl;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 
 public class Authentication {
 	public static void requireAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -41,6 +47,17 @@ public class Authentication {
 		return apikey;
 	}
 	
-
+	public static boolean isAPIKeyValid(String apikey) throws IOException {
+		String urlStr = "https://api.crunchbase.com/v/3/organizations/facebook?user_key=" + apikey;
+		OkHttpClient client = new OkHttpClient();
+		client.setConnectTimeout(30, TimeUnit.SECONDS);
+		
+		HttpUrl url = HttpUrl.parse(urlStr);
+		Request apiRequest = new Request.Builder().url(url).build();
+		// get api response
+		Response apiResponse = client.newCall(apiRequest).execute();
+		
+		return apiResponse.code() == 200;
+	}
 	
 }

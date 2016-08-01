@@ -11,6 +11,8 @@ import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.rdf.model.ResourceFactory;
 
+
+
 public class SPARQLLoader {
 	private final static String CBWPREFIX = "http://km.aifb.kit.edu/services/crunchbase/api";
 	private final static String SERVICE = "http://aifb-ls3-maia.aifb.kit.edu:8890/sparql";

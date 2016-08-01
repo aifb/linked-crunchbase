@@ -10,6 +10,9 @@
       A Linked Data server for <a href="http://www.crunchbase.com/">CrunchBase</a>, a database about technology companies anybody can edit.
     </p>
     <p>
+      Check out <a href="http://km.aif.kit.edu/sites/crunchbase/">our page</a> with some example queries on the Crunchbase dump.
+    </p>
+    <p>
       Currently, this service maps every request to Crunchbase. Some mappings of Organizations to DBpedia are available. 
       The mapping can be found <a href="./organization_mapping.nt">here</a>. 
     </p>
@@ -20,11 +23,19 @@
       If you are not authenticated, we redirect the request to a SPARQL-Server and return some of our crawled data. 
     </p>
     
-    <h2>Examples</h2>
+    <h2>Online Examples</h2>
     <ul>
       <li><a href="./api/organizations/facebook#id">/api/company/facebook#id</a></li>
-      <li><a href="./api/persons/mark-zuckerberg#id">/api/persons/mark-zuckerberg#id</a></li>
+      <li><a href="./api/people/mark-zuckerberg#id">/api/people/mark-zuckerberg#id</a></li>
     </ul>
+    <h2>Step by Step Example</h2>
+    First we get the JSON from Cruchbase. We transform it into JSON-LD and finally convert that into RDF.
+    <ol>
+      <li><a href="./html/facebook.json">JSON</a></li>
+      <li><a href="./html/facebook.jsonld">JSON-LD</a></li>
+      <li><a href="./html/facebook.ttl">RDF/Turtle</a></li>
+     </ol>
+
     <h2>Metadata</h2>
     <ul>
     	<li><a href="http://lov.okfn.org/vocommons/voaf/v2.3/">VOAF</a>: <a href="./voaf.ttl">voaf.ttl</a></li>
